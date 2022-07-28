@@ -9,14 +9,16 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.params.shadow.com.univocity.parsers.conversions.Conversions.trim;
 
 
 public class OrderCardTest {
-
     private WebDriver driver;
+
 
     @BeforeAll
 
@@ -39,8 +41,7 @@ public class OrderCardTest {
     }
 
     @Test
-
-    public void testInput() {
+    public void testCard1() {
         driver.get("http://localhost:9999/");
 //        driver.findElement().sendKeys("Петров Иван");
 //        driver.findElement().sendKeys("+79001112233");
@@ -50,8 +51,8 @@ public class OrderCardTest {
         driver.findElement(By.className("checkbox__box")).click();
         driver.findElement(By.className("button")).click();
         String actualText = driver.findElement(By.cssSelector("[data-test-id=order-success]")).getText();
-        String expected = (" Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.");
-        assertEquals(expected, actualText);
+        String expected = ("Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время.");
+        assertEquals(expected, actualText.trim());
 
 
     }
